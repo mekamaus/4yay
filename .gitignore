@@ -1,4 +1,1 @@
 .idea/
-*.js
-*.js.map
-!lib/*
