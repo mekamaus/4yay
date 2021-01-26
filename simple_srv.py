@@ -1,10 +1,10 @@
+#!/bin/python3
 import sys
-import BaseHTTPServer
-from SimpleHTTPServer import SimpleHTTPRequestHandler
+from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 
 HandlerClass = SimpleHTTPRequestHandler
-ServerClass  = BaseHTTPServer.HTTPServer
+ServerClass  = HTTPServer
 Protocol     = "HTTP/1.0"
 
 if sys.argv[1:]:
@@ -17,6 +17,6 @@ HandlerClass.protocol_version = Protocol
 httpd = ServerClass(server_address, HandlerClass)
 
 sa = httpd.socket.getsockname()
-print "Serving HTTP on", sa[0], "port", sa[1], "..."
+print("Serving HTTP on", sa[0], "port", sa[1], "...")
 httpd.serve_forever()
 
